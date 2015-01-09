@@ -1,0 +1,28 @@
+// Override Bootstrap variables in this file, e.g.
+
+// Colors
+// -----------------------------------------------------------------------------
+$grey: #C6C6C6;
+$title-grey: #808080;
+$dark-grey: #979797;
+$grey-bkg: #E0E0E0;
+
+// Fonts
+// -----------------------------------------------------------------------------
+$font-size-base: 14px;
+
+// Font Families
+// -----------------------------------------------------------------------------
+	$font-fall-backs: Helvetica, sans-serif;
+
+// Montserrat
+// -----------------------------------------------------------------------------
+	$mont: 'Montserrat-Regular', $font-fall-backs;
+	$mont-bold: 'Montserrat-Bold', $font-fall-backs;
+
+// Roboto
+// -----------------------------------------------------------------------------
+	$roboto: 'Roboto-Regular', $font-fall-backs;
+	$roboto-bold: 'Roboto-Bold', $font-fall-backs;
+	$roboto-light: 'Roboto-Light', $font-fall-backs;
+	$roboto-thin: 'Roboto-Thin', $font-fall-backs;

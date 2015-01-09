@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Gary Acers</title>
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link href="/styles/site.css" rel="stylesheet">
+
+		{{!-- This file provides the default styling for the KeystoneJS Content Editor
+			- only renders when user is logged in and admin--}}
+		{{{isAdminEditorCSS user}}}
+
+		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		//- Safely remove this block if you are not targeting IE8 --}}
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" />
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" />
+		<![endif]-->
+
+	</head>
+	<body class="{{section}}">
+		<div id="body">
+			<!--
+				Flash messages allow you to display once-off status messages to users, e.g. form
+				validation errors, success messages, etc
+			-->
+			{{#if messages}}
+			<div id="flash-messages" class="container">
+				{{#if messages.info}}
+				<div class="alert alert-info">
+						{{{flashMessages messages.info}}}
+				</div>
+				{{/if}}
+				{{#if messages.success}}
+				<div class="alert alert-success">
+						{{{flashMessages messages.success}}}
+				</div>
+				{{/if}}
+				{{#if messages.warning}}
+				<div class="alert alert-warning">
+						{{{flashMessages messages.warning}}}
+				</div>
+				{{/if}}
+				{{#if messages.error}}
+				<div class="alert alert-danger">
+						{{{flashMessages messages.error}}}
+				</div>
+				{{/if}}
+			</div>
+			{{/if}}
+			<!-- The content block should contain the body of your template's content-->
+			<div class="content-area">
+				{{{body}}}
+			</div>
+		</div>
+
+		{{!--
+			//- jQuery 1.11.1 is included by default, and required by both Bootstrap
+			//- and the KeystoneJS Content Editor. If you are not targeting IE8,
+			//- you can upgrade to 2.1.1 (also bundled) for better performance.
+		--}}
+		<script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
+		{{!--
+			//- Customise which Bootstrap javascript files are served by including
+			//- them specifically here, instead of bootstrap-3.2.0.min.js
+		--}}
+		<script src="/js/lib/bootstrap/bootstrap-3.2.0.min.js"></script>
+
+		<script src="/js/site.min.js"></script>
+		{{{isAdminEditorJS user}}}
+
+		{{#each script_url}}
+			<script src="{{this}}"></script>
+		{{/each}}
+
+		{{#if google_maps}}
+			<script>
+				var styles = [
+					{
+						stylers: [
+							{ weight: 0.7 },
+							{ lightness: 65 },
+							{ saturation: -100 }
+						]
+					}, {
+						featureType: "road",
+						elementType: "geometry",
+						stylers: [
+							{ lightness: -10 },
+							{ visibility: "simplified" }
+						]
+					}, {
+						featureType: "water",
+						elementType: "geometry",
+						stylers: [
+							{ hue: '#fff' },
+							{ lightness: 70 }
+						]
+					}
+				];
+
+				var mapOptions = {
+					center: new google.maps.LatLng(40.7127, -74.0059),
+					zoom: 14,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+					disableDefaultUI: true,
+					styles: styles
+				};
+
+				var map = new google.maps.Map(document.getElementById('map-background'), mapOptions);
+			</script>
+		{{/if}}
+	</body>
+</html>

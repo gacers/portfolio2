@@ -1,0 +1,392 @@
+$background: rgba(255, 255, 255, 0.8);
+
+.about {
+	#body {
+		background: url(/images/test.jpg) fixed;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+		ul {
+			@include clearfix();
+			list-style-type: none;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.about-body {
+			@include make-lg-column(10, 0);
+		}
+
+		.right-column {
+			@include make-lg-column(3, 0);
+		}
+
+			.music {
+				figure {
+					@include make-sm-column(7, 0);
+					@include make-md-column(7, 0);
+
+					img {
+						width: 100%;
+					}
+				}
+
+					figcaption {
+						padding-top: $grid-gutter-width;
+					}
+
+						p {
+							margin: 0;
+						}
+
+				section {
+					@include make-sm-column(6, 0);
+					@include make-sm-column-offset(1);
+					@include make-md-column(6, 0);
+					@include make-md-column-offset(1);
+
+					li {
+						@include clearfix();
+						display: table;
+						margin-top: 2px;
+						width: 100%;
+
+						&:first-child {
+							margin-top: 0;
+						}
+					}
+
+						img {
+							float: left;
+							width: 70px;
+						}
+
+						p {
+							display: table-cell;
+							padding-left: $grid-gutter-width;
+							vertical-align: middle;
+							width: 100%;
+						}
+				}
+			}
+
+		.twitter {
+			div {
+				background: $background;
+				padding: $grid-gutter-width;
+			}
+				p {
+					font-family: $roboto-light;
+				}
+
+				.tweet-info {
+					margin-bottom: 0;
+					padding-top: 10px;
+				}
+		}
+
+		.instagram {
+			ul {
+				background: $background;
+				padding: $grid-gutter-width / 2;
+			}
+
+				li {
+					@include make-xs-column(7);
+					background: transparent;
+					padding-bottom: $grid-gutter-width / 2;
+					padding-top: $grid-gutter-width / 2;
+				}
+
+					img {
+						width: 100%;
+					}
+		}
+
+	@include breakpoint(xsmall) {
+		.content {
+			padding-bottom: 30px;
+		}
+
+			article {
+				padding-bottom: 10px;
+			}
+
+				ul {
+					margin-bottom: 0;
+				}
+
+				li {
+					background: $background;
+				}
+
+			.skills {
+				li {
+					padding: 3px 10px;
+				}
+			}
+
+			.programs {
+				@extend .skills;
+			}
+
+			.music {
+				figure {
+					background: $background;
+					padding: $grid-gutter-width;
+				}
+
+				section {
+					padding-top: 10px;
+				}
+			}
+	}
+
+	@include breakpoint(small) {
+		.content {
+			padding-bottom: 40px;
+		}
+
+			article {
+				padding-bottom: 10px;
+			}
+
+				ul {
+					margin-bottom: 0;
+
+					&:first-of-type {
+						li {
+							&:first-child {
+								&:before {
+									display: none;
+								}
+							}
+						}
+					}
+				}
+
+				.skills {
+					div {
+						@include clearfix();
+						background: $background;
+						padding: 2px 3px;
+					}
+
+						ul {
+							float: left;
+						}
+
+							li {
+								float: left;
+								padding-bottom: 3px;
+								padding-top: 3px;
+							}
+				}
+
+				.music {
+					div {
+						@include clearfix();
+						background: $background;
+						padding: $grid-gutter-width;
+					}
+
+						figure {
+							float: left;
+						}
+
+						section {
+							float: left;
+						}
+
+							h3 {
+								margin-top: 0;
+							}
+				}
+	}
+
+	@include breakpoint(smallup) {
+		h2 {
+			font-size: 28px;
+		}
+
+		.skills {
+			li {
+				padding-left: 3px;
+				padding-right: 3px;
+
+				&:before {
+					content: "\2022";
+					padding-right: 6px;
+				}
+			}
+		}
+
+		.instagram {
+			li {
+				width: 16.66%
+			}
+		}
+	}
+
+	@include breakpoint(medium) {
+		article {
+			> div {
+				margin-top: 20px;
+			}
+		}
+
+		ul {
+			margin-bottom: 0;
+
+			&:first-of-type {
+				li {
+					&:first-child {
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+
+		.skills {
+			div {
+				@include clearfix();
+				background: $background;
+				padding: 2px 3px;
+			}
+
+				ul {
+					float: left;
+				}
+
+					li {
+						float: left;
+						padding-bottom: 3px;
+						padding-top: 3px;
+					}
+		}
+
+		.music {
+			div {
+				@include clearfix();
+				background: $background;
+				padding: $grid-gutter-width;
+			}
+
+				figure {
+					float: left;
+				}
+
+				section {
+					float: left;
+				}
+
+					h3 {
+						margin-top: 0;
+					}
+		}
+
+		.instagram {
+			ul {
+				margin-top: 20px;
+			}
+		}
+	}
+
+	@include breakpoint(mediumup) {
+		.content {
+			padding-bottom: 80px;
+		}
+
+			article {
+				padding-bottom: 20px;
+			}
+	}
+
+	@include breakpoint(large) {
+		.content {
+			@include clearfix();
+		}
+
+			article {
+				> div {
+					margin-top: 30px;
+				}
+			}
+
+			.about-body {
+				padding-right: $grid-gutter-width / 2;
+			}
+
+			.right-column {
+				float: right;
+			}
+
+				.skills {
+					h2 {
+						margin-top: 0;
+					}
+
+					ul {
+						background: $background;
+						margin-bottom: 2px;
+						padding: 6px 8px 5px;
+						width: 100%;
+					}
+
+						li {
+							float: left;
+
+							&:first-child {
+								padding-left: 0;
+
+								&:before {
+									display: none;
+								}
+							}
+						}
+				}
+
+				.programs {
+					h2 {
+						margin-top: 10px;
+					}
+				}
+
+				.music {
+					figure {
+						background: $background;
+						padding: $grid-gutter-width;
+						width: 100%;
+					}
+
+					section {
+						margin: 0;
+						padding-top: 10px;
+						width: 100%;
+					}
+
+						ul {
+							padding-top: 5px;
+						}
+
+							li {
+								background: $background;
+							}
+				}
+
+			.twitter {
+				@extend .about-body;
+			}
+
+			.instagram {
+				@extend .about-body;
+
+				ul {
+					margin-top: 30px;
+				}
+			}
+	}
+}

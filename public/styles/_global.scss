@@ -1,0 +1,183 @@
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	@include box-sizing(border-box);
+	background-color: #fff;
+	color: #333333;
+	font-family: $roboto-light, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.42857;
+}
+
+	#body {
+		display: table;
+		height: 100%;
+		overflow: hidden;
+		width: 100%;
+	}
+
+		#map-background {
+			height: 100%;
+			position: absolute;
+			width: 100%;
+		}
+
+
+// Base Containers
+// -----------------------------------------------------------------------------
+.content-area {
+	display: table-cell;
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+	.wrapper {
+		@include container-fixed($grid-gutter-width);
+		height: 100%;
+	}
+
+		.main-container {
+			@include make-row($grid-gutter-width);
+			display: inline-block;
+			height: 100%;
+			margin: 0 auto;
+			position: relative;
+			width: 100%;
+		}
+
+			.content {
+				@include make-lg-column-offset(1);
+				@include make-lg-column(12, $grid-gutter-width);
+				@include make-xs-column(14, $grid-gutter-width);
+				display: inline-block;
+				height: 100%;
+			}
+
+// Font Styles
+// -----------------------------------------------------------------------------
+h1 {
+	color: $grey;
+	font-family: $mont-bold;
+
+	@include breakpoint(xsmall) {
+		font-size: 70px;
+	}
+
+	@include breakpoint(smallup) {
+		font-size: 110px;
+	}
+}
+
+h2 {
+	color: $title-grey;
+	font-family: $mont-bold;
+
+	@include breakpoint(xsmall) {
+		font-size: 20px;
+	}
+
+	@include breakpoint(smallup) {
+		font-size: 36px;
+	}
+}
+
+h3 {
+	color: $title-grey;
+	font-family: $mont;
+	font-size: 18px;
+}
+
+h4 {
+	color: $grey;
+	font-family: $mont;
+	text-transform: uppercase;
+
+	@include breakpoint(xsmall) {
+		font-size: 12px;
+	}
+
+	@include breakpoint(smallup) {
+		font-size: 16px;
+	}
+}
+
+p {
+	color: #444;
+
+	@include breakpoint(xsmall) {
+		line-height: 24px;
+	}
+
+	@include breakpoint(smallup) {
+		font-size: 16px;
+		line-height: 26px;
+	}
+}
+
+figcaption {
+	color: #808080;
+	font-family: $roboto-light;
+	font-size: 12px;
+	font-style: italic;
+	line-height: 18px;
+
+	* {
+		font-size: 12px;
+	}
+}
+
+@include breakpoint(xsmall) {
+	.content-area {
+		overflow-x: hidden;
+	}
+
+		.content {
+			padding-top: 40px;
+		}
+}
+
+@include breakpoint(smallup) {
+	html {
+		&:before {
+			background: #fff;
+			content: "";
+			height: $grid-gutter-width;
+			left: 0;
+			position: fixed;
+			right: 0;
+			top: 0;
+			z-index: 9999;
+		}
+
+		border-left: $grid-gutter-width solid #fff;
+    	border-right: $grid-gutter-width solid #fff;
+	}
+
+		body {
+			&:before {
+				background: #fff;
+				bottom: 0;
+				content: "";
+				height: $grid-gutter-width;
+				left: 0;
+				position: fixed;
+				right: 0;
+				z-index: 9999;
+			}
+		}
+
+			.content-area {
+				padding-top: 20px;
+			}
+}
+
+@include breakpoint(large) {
+	.content {
+		padding-top: 60px;
+	}
+}

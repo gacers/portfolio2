@@ -1,0 +1,139 @@
+// Breakpoints
+// -----------------------------------------------------------------------------
+	@mixin breakpoint($break-point) {
+		@if $break-point == xsmall {
+			@media (max-width: $screen-xs-max) {
+				@content;
+			}
+		}
+
+		@else if $break-point == small {
+			@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+				@content;
+			}
+		}
+
+		@else if $break-point == smallup {
+			@media (min-width: $screen-sm-min) {
+				@content;
+			}
+		}
+
+		@else if $break-point == medium {
+			@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+				@content;
+			}
+		}
+
+		@else if $break-point == mediumup {
+			@media (min-width: 992px) {
+				@content;
+			}
+		}
+
+		@else if $break-point == large {
+			@media (min-width: $screen-lg-min)  {
+				@content;
+			}
+		}
+	}
+
+// Color Transition
+// -----------------------------------------------------------------------------
+	@mixin color-change($new-color) {
+		transition: color 0.3s linear;
+
+		&:hover {
+			color: $new-color;
+		}
+	}
+
+// Icons
+// -----------------------------------------------------------------------------
+	@mixin icons($icon, $color, $size) {
+		color: $color;
+		font-family: 'icomoon';
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		font-size: $size + px;
+		line-height: 1;
+		position: relative;
+		speak: none;
+		text-transform: none;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		@if $icon == "back" {
+			$content: "\e602";
+		} @else if $icon == "close" {
+			$content: "\e600";
+		} @else if $icon == "facebook" {
+			$content: "\e604";
+		} @else if $icon == "github" {
+			$content: "\e601";
+		} @else if $icon == "google" {
+			$content: "\e606";
+		} @else if $icon == "linkedin" {
+			$content: "\e605";
+		} @else if $icon == "menu" {
+			$content: "\e603";
+		} @else if $icon == "twitter" {
+			$content: "\e608";
+		} @else if $icon == "youtube" {
+			$content: "\e607";
+		}
+
+		&:before {
+			display: block;
+			content: $content;
+			height: $size + px;
+			position: absolute;
+			text-indent: 0;
+			width: $size + px;
+		}
+	}
+
+
+//	image-replacement()
+//	-----------------------------------------------------------------------------
+	@mixin image-replacement() {
+		display: block;
+		text-indent: -9999em;
+		overflow: hidden;
+	}
+
+//	pseudo()
+//	-----------------------------------------------------------------------------
+	@mixin pseudo() {
+		content: "";
+		display: block;
+		position: absolute;
+	}
+
+//	vertical-center()
+//	-----------------------------------------------------------------------------
+	@mixin vertical-center($height, $margin-top: false) {
+			@if ($margin-top == false) {
+				$margin-top: -$height / 2;
+			}
+
+			height: $height;
+			margin-top: $margin-top;
+			position: absolute;
+			top: 50%;
+		}
+
+//	visually-hidden()
+//	-----------------------------------------------------------------------------
+	//	Use to hide text that needs to be seen by screen readers.
+	@mixin visually-hidden() {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}

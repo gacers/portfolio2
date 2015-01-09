@@ -1,0 +1,119 @@
+.contact {
+	.wrapper {
+		padding: 0;
+	}
+
+		.content {
+			margin-left: 0;
+			padding-left: 0;
+			padding-right: 0;
+			padding-top: 0;
+			width: 100%;
+		}
+
+			.contact-form-wrapper {
+				@include container-fixed($grid-gutter-width);
+			}
+
+				.contact-form-container {
+					@include make-row($grid-gutter-width);
+				}
+
+				.contact-form {
+					@include make-xs-column(14, $grid-gutter-width);
+					@include make-sm-column(14, $grid-gutter-width);
+					@include make-md-column(8, $grid-gutter-width);
+					@include make-lg-column(7, $grid-gutter-width);
+					@include make-md-column-offset(1);
+					@include make-lg-column-offset(1);
+				}
+
+					.form-group {
+						overflow: hidden;
+					}
+
+						label {
+							display: block;
+							height: 0;
+							margin: 0;
+							text-indent: -9999px;
+						}
+
+						input {
+							@include border-radius(0);
+							@include box-shadow(none);
+							border: 1px solid $grey;
+						}
+
+						textarea {
+							@extend input;
+							resize: none;
+						}
+
+						form {
+							button {
+								@extend input;
+								@include transition(all linear 0.3s);
+								background: #fff;
+
+								&:disabled {
+									@extend button;
+									@include opacity(0.3);
+								}
+
+								&:hover {
+									background: $grey;
+									border: 1px solid $grey;
+								}
+							}
+						}
+
+	@include breakpoint(xsmall) {
+		.contact-form {
+			padding-left: $grid-gutter-width + 10;
+			padding-right: $grid-gutter-width + 10;
+			padding-top: 80px;
+		}
+
+			.form-group {
+				padding-bottom: 10px;
+			}
+
+			form {
+				button {
+					width: 100%;
+				}
+			}
+	}
+
+	@include breakpoint(smallup) {
+		.contact-form {
+			padding-top: 100px;
+		}
+
+			.form-group {
+				padding-bottom: 15px;
+			}
+	}
+
+	@include breakpoint(small) {
+		.contact-form {
+			padding-left: $grid-gutter-width;
+			padding-right: $grid-gutter-width;
+		}
+
+			form {
+				button {
+					width: 50%;
+				}
+			}
+	}
+
+	@include breakpoint(mediumup) {
+		form {
+			button {
+				width: 50%;
+			}
+		}
+	}
+}
