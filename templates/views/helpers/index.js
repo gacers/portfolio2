@@ -5,13 +5,13 @@ var handlebarsPath = require("handlebars-path");
 var keystone = require('keystone');
 
 // Declare Constants
-var CLOUDINARY_HOST = 'http://res.cloudinary.com';
+// var CLOUDINARY_HOST = 'http://res.cloudinary.com';
 
 // Collection of templates to interpolate
 var linkTemplate = _.template('<a href="<%= url %>"><%= text %></a>');
 var scriptTemplate = _.template('<script src="<%= src %>"></script>');
 var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
-var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
+// var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
 
 
 module.exports = function() {
@@ -188,41 +188,41 @@ module.exports = function() {
 	//
 	// Returns an src-string for a cloudinary image
 
-	_helpers.cloudinaryUrl = function(context, options) {
-		// if we dont pass in a context and just kwargs
-		// then `this` refers to our default scope block and kwargs
-		// are stored in context.hash
-		if (!options && context.hasOwnProperty('hash')) {
-			// strategy is to place context kwargs into options
-			options = context;
-			// bind our default inherited scope into context
-			context = this;
-		}
+	// _helpers.cloudinaryUrl = function(context, options) {
+	// 	// if we dont pass in a context and just kwargs
+	// 	// then `this` refers to our default scope block and kwargs
+	// 	// are stored in context.hash
+	// 	if (!options && context.hasOwnProperty('hash')) {
+	// 		// strategy is to place context kwargs into options
+	// 		options = context;
+	// 		// bind our default inherited scope into context
+	// 		context = this;
+	// 	}
 
-		// safe guard to ensure context is never null
-		context = context === null ? undefined : context;
+	// 	// safe guard to ensure context is never null
+	// 	context = context === null ? undefined : context;
 
-		// If no image is set don't try to process it
-		// (e.g. no hero image)
-		if (context === undefined || !context.url)
-			return null;
+	// 	// If no image is set don't try to process it
+	// 	// (e.g. no hero image)
+	// 	if (context === undefined || !context.url)
+	// 		return null;
 
-		var publicId = context.public_id,
-			width = ((options.width) ? options.width : '300'),
-			height = ((options.height) ? options.height : '300');
+	// 	var publicId = context.public_id,
+	// 		width = ((options.width) ? options.width : '300'),
+	// 		height = ((options.height) ? options.height : '300');
 
-		// use a regex to strip out the cloudinary username
-		var cloudKeyRegex = /res.cloudinary.com\/(.*)\/image/;
-		var cloudKey = context.url.match(cloudKeyRegex);
-		var src = cloudinaryUrlLimit({
-			publicId: publicId,
-			cloudinaryUser: cloudKey[1],
-			width: width,
-			height: height
-		});
+	// 	// use a regex to strip out the cloudinary username
+	// 	var cloudKeyRegex = /res.cloudinary.com\/(.*)\/image/;
+	// 	var cloudKey = context.url.match(cloudKeyRegex);
+	// 	var src = cloudinaryUrlLimit({
+	// 		publicId: publicId,
+	// 		cloudinaryUser: cloudKey[1],
+	// 		width: width,
+	// 		height: height
+	// 	});
 
-		return src;
-	};
+	// 	return src;
+	// };
 
 	// ### Content Url Helpers
 	// KeystoneJS url handling so that the routes are in one place for easier
