@@ -18,39 +18,21 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'about';
 
-	async.parallel({
-	    twitter: function(callback) {
-	        twitter.pullTweets(function(body){
-	        	callback(body);
-	        });
+	async.parallel([
+	    function(callback) {
+	        twitter.pullTweets(callback);
 	    },
-	    instagram: function(callback) {
-	        instagram.pullPhotos(function(medias){
-	        	callback(medias);
-	        });
+	    function(callback) {
+	        instagram.pullPhotos(callback);
 	    },
-	    lastfm: function(callback) {
-	    	lastfm.pullMusic(function(track){
-	    		callback(track);
-	    	});
+	    function(callback) {
+	    	lastfm.pullMusic(callback);
 	    }
-	}, function(err, results) {
-	    // results is now equals to: {one: 'abc\n', two: 'xyz\n'}
-	    console.log(results)
-	});
-
-
-
-
-
-		view.render('about', {
-			// song: track
+    ], function(err, results) {
+	    view.render('about', {
+				song: results[2],
+				tweet: results[0],
+				images: results[1]
+			});
 		});
 };
-
-// instagram.pullPhotos(function(medias){
-// 	view.render('about', {
-// 		images: medias
-// 	});
-// });
-//

@@ -28,7 +28,7 @@ module.exports = {
 		    handlers: {
 		        success: function(data) {
 		        	var track = data.recenttracks.track[0];
-		        	callback(getInfo(track));
+		        	callback(null, getInfo(track));
 		        },
 		        error: function(error) {
 		            console.log("Error: " + error.message);
