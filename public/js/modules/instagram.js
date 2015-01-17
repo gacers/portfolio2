@@ -11,7 +11,7 @@ module.exports = {
 			}
 
 			if(medias) {
-				callback(medias)
+				callback(null, medias)
 			}
 		});
 	}

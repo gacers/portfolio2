@@ -59,7 +59,7 @@ module.exports = {
 		    }
 
 		    if (body) {
-		    	callback(parseData(body));
+		    	callback(null, parseData(body));
 		    }
 		});
 	}
